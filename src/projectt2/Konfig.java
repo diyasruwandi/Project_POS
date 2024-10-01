@@ -9,7 +9,7 @@ public class Konfig {
 
 
     public static void main(String[] args) {
-            String url = "jdbc:mysql://localhost/admin";
+            String url = "jdbc:mysql://localhost/POS";
             String user = "root";
             String pass = "";
 
