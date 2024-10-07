@@ -37,7 +37,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lb_nama = new javax.swing.JLabel();
         lb_role = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        batmanbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,12 +103,13 @@ public class HomePage extends javax.swing.JFrame {
         lb_role.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_role.setText("Role");
 
-        jLabel2.setBackground(new java.awt.Color(255, 102, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/batman.png"))); // NOI18N
-        jLabel2.setMaximumSize(new java.awt.Dimension(80, 80));
-        jLabel2.setMinimumSize(new java.awt.Dimension(80, 80));
-        jLabel2.setPreferredSize(new java.awt.Dimension(80, 80));
+        batmanbutton.setBackground(new java.awt.Color(255, 102, 255));
+        batmanbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/batman.png"))); // NOI18N
+        batmanbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                batmanbuttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -120,16 +121,17 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(lb_nama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lb_role, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(batmanbutton)
+                .addGap(76, 76, 76))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
+                .addComponent(batmanbutton)
+                .addGap(29, 29, 29)
                 .addComponent(lb_nama)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lb_role)
@@ -168,6 +170,11 @@ public class HomePage extends javax.swing.JFrame {
         loginFrame.setVisible(true);
     }//GEN-LAST:event_logoutbuttonActionPerformed
 
+    private void batmanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batmanbuttonActionPerformed
+        ProfilFrame Profil = new ProfilFrame();
+        Profil.setVisible(true);
+    }//GEN-LAST:event_batmanbuttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -204,8 +211,8 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton batmanbutton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
