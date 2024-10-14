@@ -10,19 +10,33 @@ public class konfig {
     public static Connection getkonfig(){
         if(konfig==null){
             try {
-                String url = new String();
-                String user = new String();
-                String password = new String();
-                url = "jdbc:mysql://localhost:3306/pos";
-                user = "root";
-                password = "";
-                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+//                String url = new String();
+//                String user = new String();
+//                String password = new String();
+                String url = "jdbc:mysql://localhost:3306/pos";
+                String user = "root";  
+                String password = "";
+//                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
                 konfig = DriverManager.getConnection(url,user,password);
             } catch (SQLException e) {
-                System.out.println("koneksi error");
+                System.out.println("koneksi error:" + e.getMessage());
             }
         }
         return konfig;
+        
+        //baca data dari mysql
+//        public static ResultSet read(String sql) throws SQLException{
+//            ResultSet rs = null;
+//            
+//            try {
+//                konfig = (Connection) getkonfig();
+//                Statement st = konfig.createStatement();
+//                st.executeQuery(sql);
+//            } catch (SQLException ex) {
+//                JOptionPane.showMessageDialog(null, ex.toString());
+//            }
+//            return rs;
+//        }
     }
 
 
