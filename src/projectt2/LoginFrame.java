@@ -141,6 +141,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-close-30.png"))); // NOI18N
+        jButton1.setBorder(null);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -167,7 +168,7 @@ public class LoginFrame extends javax.swing.JFrame {
         kiriLayout.setHorizontalGroup(
             kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kiriLayout.createSequentialGroup()
-                .addGap(0, 360, Short.MAX_VALUE)
+                .addGap(0, 366, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(4, 4, 4))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kiriLayout.createSequentialGroup()
@@ -211,7 +212,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGroup(kiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(resetbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         jPanel1.add(kiri, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 400, 500));

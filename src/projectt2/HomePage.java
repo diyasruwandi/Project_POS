@@ -34,6 +34,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         logoutbutton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        btndatauser = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lb_nama = new javax.swing.JLabel();
         lb_role = new javax.swing.JLabel();
@@ -49,6 +50,7 @@ public class HomePage extends javax.swing.JFrame {
 
         logoutbutton.setBackground(new java.awt.Color(0, 0, 0));
         logoutbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logout.png"))); // NOI18N
+        logoutbutton.setBorder(null);
         logoutbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutbuttonActionPerformed(evt);
@@ -80,15 +82,32 @@ public class HomePage extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        btndatauser.setBackground(new java.awt.Color(0, 0, 0));
+        btndatauser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btndatauser.setForeground(new java.awt.Color(255, 255, 255));
+        btndatauser.setText("Data User");
+        btndatauser.setBorder(null);
+        btndatauser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndatauserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(btndatauser, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btndatauser, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 255));
@@ -105,6 +124,7 @@ public class HomePage extends javax.swing.JFrame {
 
         batmanbutton.setBackground(new java.awt.Color(255, 102, 255));
         batmanbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/batman.png"))); // NOI18N
+        batmanbutton.setBorder(null);
         batmanbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 batmanbuttonActionPerformed(evt);
@@ -124,14 +144,14 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(batmanbutton)
-                .addGap(76, 76, 76))
+                .addGap(83, 83, 83))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(batmanbutton)
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addComponent(lb_nama)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lb_role)
@@ -175,6 +195,11 @@ public class HomePage extends javax.swing.JFrame {
         Profil.setVisible(true);
     }//GEN-LAST:event_batmanbuttonActionPerformed
 
+    private void btndatauserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndatauserActionPerformed
+        frameDU dataUser = new frameDU();
+        dataUser.setVisible(true);
+    }//GEN-LAST:event_btndatauserActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,6 +237,7 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton batmanbutton;
+    private javax.swing.JButton btndatauser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
