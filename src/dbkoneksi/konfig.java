@@ -2,13 +2,14 @@
 package dbkoneksi;
 
 import java.sql.Connection;
+import com.mysql.cj.jdbc.MysqlDataSource;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class konfig {
-    private static Connection konfig;
-    public static Connection getkonfig(){
-        if(konfig==null){
+//    private static Connection konfig;
+    public static Connection sambung(){
+//        if(konfig==null){
             try {
 //                String url = new String();
 //                String user = new String();
@@ -17,12 +18,16 @@ public class konfig {
                 String user = "root";  
                 String password = "";
 //                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-                konfig = DriverManager.getConnection(url,user,password);
+                Connection con = DriverManager.getConnection(url,user,password);
+                System.out.println("Koneksi Berhasil");
+                
+                return con;
+                
             } catch (SQLException e) {
                 System.out.println("koneksi error:" + e.getMessage());
             }
-        }
-        return konfig;
+        
+        return null;
         
         //baca data dari mysql
 //        public static ResultSet read(String sql) throws SQLException{
