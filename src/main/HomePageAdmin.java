@@ -276,6 +276,8 @@ public class HomePageAdmin extends javax.swing.JFrame {
 
     private void btnprodukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprodukActionPerformed
         // TODO add your handling code here:
+        Dataproduk dp = new Dataproduk();
+        dp.setVisible(true);
     }//GEN-LAST:event_btnprodukActionPerformed
 
     /**
