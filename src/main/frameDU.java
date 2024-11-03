@@ -349,7 +349,7 @@ public class frameDU extends javax.swing.JFrame {
     
           pst.setString(1, txtfull.getText());
           pst.setString(2, txtnama.getText());
-          pst.setString(3, txtemail.getText());
+          pst.setString(3, txtemail.getText()); 
           pst.setString(4, txtnohp.getText());
           pst.setString(5, txtrole.getText());
           pst.setString(6, txtid.getText()); 
