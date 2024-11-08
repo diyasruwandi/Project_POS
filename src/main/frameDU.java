@@ -316,7 +316,7 @@ public class frameDU extends javax.swing.JFrame {
                 pst.setString(4, txtemail.getText());
                 pst.setString(5, txtnohp.getText());
                 pst.setString(6, txtrole.getText());
-                pst.executeUpdate();
+                pst.executeUpdate(); 
                 JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
                 tampilkan();
             } catch (SQLException ex) {

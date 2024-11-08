@@ -8,13 +8,25 @@ package main;
  *
  * @author DIYAS
  */
+import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class Dataproduk extends javax.swing.JFrame {
 
     /**
-     * Creates new form Dataproduk
+     * Creates new form 
      */
+    DefaultTableModel modell;
     public Dataproduk() {
         initComponents();
+        String [] judul = {"Kode Produk","Nama Produk", "Gambar Produk", "Kategori", "Supplier", "Harga Jual","Harga Beli","Stok Produk"};
+        modell =new DefaultTableModel (judul, 0);
+        jTable1.setModel(modell);
+        tampil();
     }
 
     /**
@@ -28,11 +40,12 @@ public class Dataproduk extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        closee = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btntambah = new javax.swing.JButton();
+        btnupdate = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -45,20 +58,32 @@ public class Dataproduk extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 102, 255));
         jLabel1.setText("DATA PRODUK");
 
+        closee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-close-30.png"))); // NOI18N
+        closee.setBorder(null);
+        closee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(476, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(326, 326, 326))
+                .addGap(236, 236, 236)
+                .addComponent(closee)
+                .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(closee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -66,29 +91,31 @@ public class Dataproduk extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode Produk", "Nama Produk", "Gambar Produk", "Kategori", "Supplier", "Harga Jual", "Harga Beli", "Stok Produk"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 51));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Tambah");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btntambah.setBackground(new java.awt.Color(51, 255, 51));
+        btntambah.setForeground(new java.awt.Color(0, 0, 0));
+        btntambah.setText("Tambah");
+        btntambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btntambahActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(51, 255, 255));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Update");
+        btnupdate.setBackground(new java.awt.Color(51, 255, 255));
+        btnupdate.setForeground(new java.awt.Color(0, 0, 0));
+        btnupdate.setText("Update");
+        btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdateActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 51, 51));
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
@@ -105,18 +132,18 @@ public class Dataproduk extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(jButton1)
+                        .addComponent(btntambah)
                         .addGap(79, 79, 79)
-                        .addComponent(jButton2)
+                        .addComponent(btnupdate)
                         .addGap(85, 85, 85)
                         .addComponent(jButton3)
                         .addGap(70, 70, 70)
-                        .addComponent(jButton4)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                        .addComponent(jButton4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,11 +152,11 @@ public class Dataproduk extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(btntambah)
+                    .addComponent(btnupdate)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,12 +177,23 @@ public class Dataproduk extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btntambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahActionPerformed
         // TODO add your handling code here:
         TambahDP tdp = new TambahDP(this, true);
         tdp.setVisible(true);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btntambahActionPerformed
+
+    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
+        // TODO add your handling code here:
+        TambahDP tdp = new TambahDP(this, true);
+        tdp.setVisible(true);
+    }//GEN-LAST:event_btnupdateActionPerformed
+
+    private void closeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeeActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_closeeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,8 +231,9 @@ public class Dataproduk extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btntambah;
+    private javax.swing.JButton btnupdate;
+    private javax.swing.JButton closee;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -203,4 +242,38 @@ public class Dataproduk extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void tampil() {
+//        int row = jTable1.getRowCount();
+//        for(int a= 0; a<row;a++){
+//            modell.setRowCount(0);
+//        }
+        try {
+            Connection con = dbkoneksi.konfig.sambung();
+            String sql = "SELECT * FROM data_produk";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            
+            modell.setRowCount(0);
+//            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM data_produk");
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getString("kode_produk"),
+                    rs.getString("nama_produk"),
+                    rs.getString("gambar_produk"),
+                    rs.getString("kategori_produk"),
+                    rs.getString("supplier"),
+                    rs.getDouble("harga_jual"),
+                    rs.getDouble("harga_beli"),
+                    rs.getInt("stok_produk")
+                };
+//                String data []= {rs.getString(2),rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+//                    rs.getString(7), rs.getString(8), rs.getString(9)};
+                modell.addRow(row);
+            }
+            jTable1.setModel(modell);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + e.getMessage());
+        }
+    }
 }
