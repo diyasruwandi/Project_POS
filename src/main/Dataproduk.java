@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Dataproduk extends javax.swing.JFrame {
@@ -46,8 +48,10 @@ public class Dataproduk extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         btntambah = new javax.swing.JButton();
         btnupdate = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnhapus = new javax.swing.JButton();
+        btnrefresh = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,9 +75,9 @@ public class Dataproduk extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(476, Short.MAX_VALUE)
+                .addGap(325, 325, 325)
                 .addComponent(jLabel1)
-                .addGap(236, 236, 236)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(closee)
                 .addGap(15, 15, 15))
         );
@@ -117,46 +121,70 @@ public class Dataproduk extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 51, 51));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Hapus");
+        btnhapus.setBackground(new java.awt.Color(255, 51, 51));
+        btnhapus.setForeground(new java.awt.Color(0, 0, 0));
+        btnhapus.setText("Hapus");
+        btnhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhapusActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Reset");
+        btnrefresh.setBackground(new java.awt.Color(0, 0, 0));
+        btnrefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnrefresh.setText("Refresh");
+        btnrefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnrefreshActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(btntambah)
-                        .addGap(79, 79, 79)
-                        .addComponent(btnupdate)
-                        .addGap(85, 85, 85)
-                        .addComponent(jButton3)
-                        .addGap(70, 70, 70)
-                        .addComponent(jButton4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(139, 139, 139)
+                            .addComponent(btntambah)
+                            .addGap(79, 79, 79)
+                            .addComponent(btnupdate)
+                            .addGap(85, 85, 85)
+                            .addComponent(btnhapus)
+                            .addGap(70, 70, 70)
+                            .addComponent(btnrefresh))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(16, 16, 16)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btntambah)
                     .addComponent(btnupdate)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(183, Short.MAX_VALUE))
+                    .addComponent(btnhapus)
+                    .addComponent(btnrefresh))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,21 +207,92 @@ public class Dataproduk extends javax.swing.JFrame {
 
     private void btntambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahActionPerformed
         // TODO add your handling code here:
+        
         TambahDP tdp = new TambahDP(this, true);
+        tdp.setLocationRelativeTo(this); 
         tdp.setVisible(true);
 
     }//GEN-LAST:event_btntambahActionPerformed
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
         // TODO add your handling code here:
+        // Mendapatkan baris yang dipilih di JTable
+    int selectedRow = jTable1.getSelectedRow();
+    
+    if (selectedRow >= 0) {
+        // Mengambil data produk yang dipilih
+        String kodeProduk = jTable1.getValueAt(selectedRow, 0).toString();  // Kode Produk ada di kolom pertama
+        String namaProduk = jTable1.getValueAt(selectedRow, 1).toString();  // Nama Produk di kolom kedua
+        String gambarProduk = jTable1.getValueAt(selectedRow, 2).toString();  // Gambar Produk di kolom ketiga
+        String kategoriProduk = jTable1.getValueAt(selectedRow, 3).toString();  // Kategori di kolom keempat
+        String supplier = jTable1.getValueAt(selectedRow, 4).toString();  // Supplier di kolom kelima
+        double hargaJual = Double.parseDouble(jTable1.getValueAt(selectedRow, 5).toString());  // Harga Jual di kolom keenam
+        double hargaBeli = Double.parseDouble(jTable1.getValueAt(selectedRow, 6).toString());  // Harga Beli di kolom ketujuh
+        int stokProduk = Integer.parseInt(jTable1.getValueAt(selectedRow, 7).toString());  // Stok Produk di kolom kedelapan
+
+        // Membuka form update dengan data yang sudah dipilih
         TambahDP tdp = new TambahDP(this, true);
-        tdp.setVisible(true);
+        tdp.setLocationRelativeTo(this); 
+ 
+        tdp.setKodeProduk(kodeProduk);  // Set Kode Produk
+        tdp.setNamaProduk(namaProduk);  // Set Nama Produk
+        tdp.setGambarProduk(gambarProduk);  // Set Gambar Produk
+        tdp.setKategoriProduk(kategoriProduk);  // Set Kategori Produk
+        tdp.setSupplier(supplier);  // Set Supplier
+        tdp.setHargaJual(hargaJual);  // Set Harga Jual
+        tdp.setHargaBeli(hargaBeli);  // Set Harga Beli
+        tdp.setStokProduk(stokProduk);  // Set Stok Produk
+        tdp.setVisible(true);  // Menampilkan form update
+    } else {
+        JOptionPane.showMessageDialog(this, "Silakan pilih produk yang ingin diupdate.");
+    }
     }//GEN-LAST:event_btnupdateActionPerformed
 
     private void closeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeeActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_closeeActionPerformed
+
+    private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable1.getSelectedRow();
+        
+        if (selectedRow >=0){
+            String kodeProduk = jTable1.getValueAt(selectedRow, 0).toString();
+            
+            int confirm = JOptionPane.showConfirmDialog(null,  "Apakah Anda yakin ingin menghapus produk dengan kode: " + kodeProduk + "?", 
+                    "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION){
+                //Proses menghapus dari database
+                try{
+                    Connection con = dbkoneksi.konfig.sambung();
+                    String sql = "DELETE FROM data_produk WHERE kode_produk = ?";
+                    PreparedStatement pst = con.prepareStatement(sql);
+                    pst.setString(1, kodeProduk); //mengikat kode produk ke query
+                    
+                    //menjalankan query
+                    int result = pst.executeUpdate();
+                    
+                    if (result > 0){
+                        JOptionPane.showMessageDialog(null, "Produk berhasil dihapus");
+                        tampil();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Produk gagal dihapus");
+                    }
+                } catch (SQLException ex){
+                    Logger.getLogger(Dataproduk.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menghapus produk" + ex.getMessage());
+                }
+            }
+        }else {
+            JOptionPane.showMessageDialog(this, "Silahkan pilih produk yang ingin dihapus");
+        }
+    }//GEN-LAST:event_btnhapusActionPerformed
+
+    private void btnrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrefreshActionPerformed
+        // TODO add your handling code here:
+        tampil();
+    }//GEN-LAST:event_btnrefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,16 +330,18 @@ public class Dataproduk extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnhapus;
+    private javax.swing.JButton btnrefresh;
     private javax.swing.JButton btntambah;
     private javax.swing.JButton btnupdate;
     private javax.swing.JButton closee;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
