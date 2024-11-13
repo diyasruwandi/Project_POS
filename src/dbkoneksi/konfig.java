@@ -2,7 +2,6 @@
 package dbkoneksi;
 
 import java.sql.Connection;
-import com.mysql.cj.jdbc.MysqlDataSource;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
