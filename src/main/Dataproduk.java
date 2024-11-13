@@ -140,6 +140,11 @@ public class Dataproduk extends javax.swing.JFrame {
         });
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search (1).png"))); // NOI18N
 
@@ -293,6 +298,41 @@ public class Dataproduk extends javax.swing.JFrame {
         // TODO add your handling code here:
         tampil();
     }//GEN-LAST:event_btnrefreshActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("kode_produk");
+        tbl.addColumn("nama_produk");
+        tbl.addColumn("gambar_produk");
+        tbl.addColumn("kategori_produk");
+        tbl.addColumn("supplier");
+        tbl.addColumn("harga_jual");
+        tbl.addColumn("harga_beli");
+        tbl.addColumn("stok_produk");
+        
+        try {
+            Connection con = dbkoneksi.konfig.sambung();
+            String cari = jTextField1.getText();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM data_produk WHERE nama_produk like '%"+cari+"%'");
+            while (rs.next()){
+                tbl.addRow(new Object[]{
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    rs.getString(7),
+                    rs.getString(8),
+                    rs.getString(9)
+                });
+            }
+            
+            jTable1.setModel(tbl);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"ada kesalahan"+ e);
+        }
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
