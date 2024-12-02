@@ -321,6 +321,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
     public static void main(String args[]) {
                 LoginFrame start = new LoginFrame();
+                start.setLocationRelativeTo(null);
                 start.setVisible(true);
     /**
      * @param args the command line arguments
