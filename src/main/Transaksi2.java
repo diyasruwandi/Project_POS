@@ -651,6 +651,7 @@ public class Transaksi2 extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         saveTransaksi();
         saveDetailTransaksi();
+        resetForm();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txtpayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpayActionPerformed
@@ -816,5 +817,21 @@ public class Transaksi2 extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "error saat menyimpan" + e.getMessage());
         }
+    }
+
+    private void resetForm() {
+        txtnofaktur.setText("");
+        txtpcode.setText("");
+        txtpname.setText("");
+        txtprice.setText("");
+        txtqty.setValue(0);
+        txtjumlah.setText("");
+        txttotal.setText("");
+        txtpay.setText("");
+        txtjujul.setText("");
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
     }
 }
